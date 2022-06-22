@@ -40,3 +40,12 @@ exports.deleteFilm = async (collection, toDelete) => {
         console.log(error);
     }
 }
+exports.deleteFilms = async (collection, toDelete) => {
+    try{
+        const deleteTitle = {title:toDelete};
+        const filmDelete = await collection.deleteMany(deleteTitle);
+        console.log(filmDelete);
+    } catch(error) {
+        console.log(error);
+    }
+}
