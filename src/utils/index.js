@@ -20,7 +20,7 @@ exports.listFilms = async (collection) => {
 exports.updateFilm = async (collection, oldTitle,newFilm) => {
     try{
         const checkTitle = {title:oldTitle}
-        const updateTo = {$set:{title:newFilm.title,actor:newFilm.actor}};
+        const updateTo = {$set:{title:newFilm.title,actor:newFilm.actor,director:newFilm.director}};
         const filmUpdate = await collection.updateOne(checkTitle,updateTo);
         console.log(filmUpdate);
     }
