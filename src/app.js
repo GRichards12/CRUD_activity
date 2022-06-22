@@ -2,7 +2,7 @@ const yargs = require("yargs");
 
 const { connection, client } = require("./db/connection");
 
-const { addFilm, listFilms, updateFilm, deleteFilm, deleteFilms, updateFilms} = require("./utils");
+const { addFilm, listFilms, updateFilm, deleteFilm, deleteFilms, updateFilms, listWithDirectors} = require("./utils");
 
 const app = async (yargsObj) => {
     const collection = await connection();
@@ -11,7 +11,10 @@ const app = async (yargsObj) => {
         console.log("Entry added!");
     } else if(yargsObj.list) {
         await listFilms(collection);
-    } else if(yargsObj.update){
+    } else if(yargsObj.listWithDirectors){
+        await listWithDirectors(collection);
+    }
+    else if(yargsObj.update){
         await updateFilm(collection,yargsObj.update, {title:yargsObj.title,actor:yargsObj.actor,director:yargsObj.director});
         console.log("Entry updated!");
     } else if(yargsObj.updateMulti){
