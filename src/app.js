@@ -2,7 +2,7 @@ const yargs = require("yargs");
 
 const { connection, client } = require("./db/connection");
 
-const { addFilm, listFilms, updateFilm, deleteFilm, deleteFilms, updateFilms, listWithDirectors} = require("./utils");
+const { addFilm, listFilms, updateFilm, deleteFilm, deleteFilms, updateFilms, listWithDirectors, listWithActors} = require("./utils");
 
 const app = async (yargsObj) => {
     const collection = await connection();
