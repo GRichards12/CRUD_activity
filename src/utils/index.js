@@ -19,7 +19,7 @@ exports.listFilms = async (collection) => {
 
 exports.updateFilm = async (collection, oldTitle,newFilm) => {
     try{
-        const checkTitle = {title:oldTitle}
+        const checkTitle = {title:oldTitle};
         const updateTo = {$set:{title:newFilm.title,actor:newFilm.actor,director:newFilm.director}};
         const filmUpdate = await collection.updateOne(checkTitle,updateTo);
         console.log(filmUpdate);
@@ -29,6 +29,16 @@ exports.updateFilm = async (collection, oldTitle,newFilm) => {
     }
 }
 
+exports.updateFilms = async (collection, oldTitle, newFilm) => {
+    try{
+        const checkTitle = {title:oldTitle};
+        const updateTo = {$set:{title:newFilm.title,actor:newFilm.actor,director:newFilm.director}};
+        const filmsUpdate = await collection.updateMany(checkTitle,updateTo);
+        console.log(filmsUpdate);
+    } catch(error){
+        console.log(error);
+    }
+}
 
 exports.deleteFilm = async (collection, toDelete) => {
     try{
@@ -40,6 +50,7 @@ exports.deleteFilm = async (collection, toDelete) => {
         console.log(error);
     }
 }
+
 exports.deleteFilms = async (collection, toDelete) => {
     try{
         const deleteTitle = {title:toDelete};
