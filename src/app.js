@@ -7,7 +7,7 @@ const { addFilm, listFilms, updateFilm, deleteFilm, deleteFilms, updateFilms} = 
 const app = async (yargsObj) => {
     const collection = await connection();
     if(yargsObj.add) {
-        await addFilm(collection, {title: yargsObj.title,actor: yargsObj.actor,director:yargsObj.director});
+        await addFilm(collection, {title: yargsObj.title,actor: yargsObj.actor="not specified",director:yargsObj.director="not specified"});
         console.log("Entry added!");
     } else if(yargsObj.list) {
         await listFilms(collection);
