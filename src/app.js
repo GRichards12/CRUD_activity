@@ -13,8 +13,9 @@ const app = async (yargsObj) => {
         await listFilms(collection);
     } else if(yargsObj.listWithDirectors){
         await listWithDirectors(collection);
-    }
-    else if(yargsObj.update){
+    } else if(yargsObj.listWithActors){
+        await listWithActors(collection);
+    } else if(yargsObj.update){
         await updateFilm(collection,yargsObj.update, {title:yargsObj.title,actor:yargsObj.actor,director:yargsObj.director});
         console.log("Entry updated!");
     } else if(yargsObj.updateMulti){

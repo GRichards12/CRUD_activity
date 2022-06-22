@@ -27,6 +27,16 @@ exports.listWithDirectors = async (collection) => {
     }
 }
 
+exports.listWithActors = async (collection) => {
+    try{
+        let filtered = await collection.aggregate([{$match:{actor:{$ne:"not specified"}}}]).toArray();
+        console.log(filtered);
+    }
+    catch(error){
+        console.log(error);
+    }
+}
+
 exports.updateFilm = async (collection, oldTitle,newFilm) => {
     try{
         const checkTitle = {title:oldTitle};
